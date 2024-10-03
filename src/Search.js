@@ -47,7 +47,9 @@ export default function Search() {
           />
           <input type="submit" value="Search" className="SearchButton" />
         </form>
-        <h3>Weather Summary for {weather.name}:</h3>
+        <h3>
+          Weather <mark>Summary</mark> for {weather.name}:
+        </h3>
         <div className="WeatherProps">
           <ul>
             <li>Temperature: {weather.temp}°F</li>

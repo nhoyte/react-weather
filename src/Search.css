@@ -1,34 +1,45 @@
-h1 {
+.Search h1 {
   color: rgb(218, 0, 131);
 }
-.SearchButton {
-  margin: 0 12px;
-  padding: 5px 10px;
+.Search h3 {
+  margin: 15px 0;
+}
+.Search .SearchButton {
   color: white;
   background-color: rgb(255, 127, 204);
   border: 1px solid rgb(215, 0, 72);
   border-radius: 4px;
 }
-.SearchButton:hover {
+.Search .SearchButton:hover {
   background-color: rgb(231, 86, 173);
 }
-div.Search {
+.Search div.Search {
   text-align: center;
 }
-.WeatherProps {
-  text-align: left;
-  margin: 0 auto;
-  max-width: 25%;
-}
-.WeatherProps ul {
-  list-style-type: square;
-  margin: 0;
-}
-.WeatherProps li {
-  margin: 0;
+.Search .WeatherProps .WeatherIcon {
   padding: 0;
 }
-h3 {
-  margin-top: 50px;
-  text-align: center;
+.WeatherProps .Temperature {
+  padding: 0 0 0 8px;
+  font-size: 40px;
+  line-height: 1;
+}
+.WeatherProps .SummaryInfo {
+  padding: 0;
+}
+.WeatherProps li {
+  list-style-type: none;
+  font-size: 12px;
+}
+.Search .WeatherColumn p,
+h4 {
+  margin: 0;
+  text-align: right;
+}
+.Search .WeatherColumn h4 {
+  font-size: 25px;
+  line-height: 1;
+}
+.Search .WeatherColumn p {
+  font-size: 14px;
 }

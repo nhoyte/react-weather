@@ -29,7 +29,7 @@ export default function Search() {
       temp: Math.round(response.data.main.temp),
       description: response.data.weather[0].description,
       humidity: response.data.main.humidity,
-      wind: response.data.wind.speed,
+      wind: Math.round(response.data.wind.speed),
       iconURL: `https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`,
     });
     setResponse(true);
@@ -37,43 +37,76 @@ export default function Search() {
 
   if (response) {
     return (
-      <div>
+      <div className="Search">
         <form onSubmit={formSubmit}>
-          <input
-            type="search"
-            placeholder="Type a City..."
-            autoFocus={true}
-            onChange={updateCity}
-          />
-          <input type="submit" value="Search" className="SearchButton" />
+          <div className="row">
+            <div className="col-9">
+              <input
+                type="search"
+                placeholder="Type a City..."
+                autoFocus={true}
+                onChange={updateCity}
+                className="w-100"
+              />
+            </div>
+            <div className="col-3">
+              <input
+                type="submit"
+                value="Search"
+                className="SearchButton w-100"
+              />
+            </div>
+          </div>
         </form>
-        <h3>
-          Weather <mark>Summary</mark> for {weather.name}:
-        </h3>
+        <h3>{weather.name}</h3>
         <div className="WeatherProps">
-          <ul>
-            <li>Temperature: {weather.temp}°F</li>
-            <li>Description: {weather.description}</li>
-            <li>Humidity: {weather.humidity}%</li>
-            <li>Wind: {weather.wind}mph</li>
-            <li>
-              <img src={weather.iconURL} alt="weather icon" />
-            </li>
-          </ul>
+          <div className="row">
+            <div className="col-9">
+              <span className="row">
+                <span className="col-2 WeatherIcon">
+                  <img src={weather.iconURL} alt="weather icon" />
+                </span>
+                <span className="col-2 Temperature">{weather.temp}°F</span>
+                <span className="col SummaryInfo">
+                  <ul>
+                    <li>Precipitation: 5%</li>
+                    <li>Humidity: {weather.humidity}%</li>
+                    <li>Wind: {weather.wind}mph</li>
+                  </ul>
+                </span>
+              </span>
+            </div>
+            <div className="col-3 WeatherColumn">
+              <h4>Weather</h4>
+              <p>Thursday 8:13 pm</p>
+              <p>Description: {weather.description}</p>
+            </div>
+          </div>
         </div>
       </div>
     );
   } else {
     return (
-      <div>
+      <div className="Search">
         <form onSubmit={formSubmit}>
-          <input
-            type="search"
-            placeholder="Type a City..."
-            autoFocus={true}
-            onChange={updateCity}
-          />
-          <input type="submit" value="Search" className="SearchButton" />
+          <div className="row">
+            <div className="col-9">
+              <input
+                type="search"
+                placeholder="Type a City..."
+                autoFocus={true}
+                onChange={updateCity}
+                className="w-100"
+              />
+            </div>
+            <div className="col-3">
+              <input
+                type="submit"
+                value="Search"
+                className="SearchButton w-100"
+              />
+            </div>
+          </div>
         </form>
       </div>
     );

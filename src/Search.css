@@ -1,3 +1,6 @@
+:root {
+  --secondary-color: #919191;
+}
 .Search h1 {
   color: rgb(218, 0, 131);
 }
@@ -19,13 +22,30 @@
 .Search .WeatherProps .WeatherIcon {
   padding: 0;
 }
+.Search .WeatherProps img {
+  width: 115px;
+  height: 115px;
+  position: relative;
+  top: -28px;
+}
 .WeatherProps .Temperature {
-  padding: 0 0 0 8px;
-  font-size: 40px;
+  padding: 0;
+  font-size: 50px;
   line-height: 1;
 }
+.WeatherProps .Degrees {
+  font-size: 16px;
+  font-weight: 550;
+  padding: 0 5px;
+}
+.WeatherProps .Degrees .UnitsCelsius {
+  color: var(--secondary-color);
+}
 .WeatherProps .SummaryInfo {
+  color: var(--secondary-color);
   padding: 0;
+  position: relative;
+  left: -45px;
 }
 .WeatherProps li {
   list-style-type: none;
@@ -42,4 +62,6 @@ h4 {
 }
 .Search .WeatherColumn p {
   font-size: 14px;
+  color: var(--secondary-color);
+  line-height: 20px;
 }

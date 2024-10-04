@@ -66,7 +66,11 @@ export default function Search() {
                 <span className="col-2 WeatherIcon">
                   <img src={weather.iconURL} alt="weather icon" />
                 </span>
-                <span className="col-2 Temperature">{weather.temp}°F</span>
+                <span className="col-1 Temperature">{weather.temp}</span>
+                <span className="col-2 Degrees">
+                  <span className="UnitsFarenheit">°F</span>|
+                  <span className="UnitsCelsius">°C</span>
+                </span>
                 <span className="col SummaryInfo">
                   <ul>
                     <li>Precipitation: 5%</li>

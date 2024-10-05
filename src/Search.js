@@ -1,19 +1,19 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { RotatingLines } from "react-loader-spinner";
 
 import "./Search.css";
 
-export default function Search() {
+export default function Search(props) {
   let [city, setCity] = useState("");
-  let [response, setResponse] = useState(false);
-  let [weather, setWeather] = useState({});
+  let [weather, setWeather] = useState({ ready: false });
 
   function formSubmit(event) {
     event.preventDefault();
     if (city) {
       let apiKey = "6bfa54f242cbb59343d4e58db578dc61";
       let url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=imperial`;
-      axios.get(url).then(displayWeather);
+      axios.get(url).then(handleResponse);
     } else {
       alert("No city entered...");
     }
@@ -23,8 +23,10 @@ export default function Search() {
     setCity(event.target.value);
   }
 
-  function displayWeather(response) {
+  function handleResponse(response) {
+    console.log(response.data);
     setWeather({
+      ready: true,
       name: response.data.name,
       temp: Math.round(response.data.main.temp),
       description: response.data.weather[0].description,
@@ -32,10 +34,9 @@ export default function Search() {
       wind: Math.round(response.data.wind.speed),
       iconURL: `https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`,
     });
-    setResponse(true);
   }
 
-  if (response) {
+  if (weather.ready) {
     return (
       <div className="Search">
         <form onSubmit={formSubmit}>
@@ -83,13 +84,18 @@ export default function Search() {
             <div className="col-3 WeatherColumn">
               <h4>Weather</h4>
               <p>Thursday 8:13 pm</p>
-              <p>Description: {weather.description}</p>
+              <p className="Description text-capitalize">
+                {weather.description}
+              </p>
             </div>
           </div>
         </div>
       </div>
     );
   } else {
+    let apiKey = "6bfa54f242cbb59343d4e58db578dc61";
+    let url = `https://api.openweathermap.org/data/2.5/weather?q=${props.defaultCity}&appid=${apiKey}&units=imperial`;
+    axios.get(url).then(handleResponse);
     return (
       <div className="Search">
         <form onSubmit={formSubmit}>
@@ -112,6 +118,21 @@ export default function Search() {
             </div>
           </div>
         </form>
+        <div className="Loading">
+          Loading...
+          <br />
+          <RotatingLines
+            visible={true}
+            height="96"
+            width="96"
+            strokeColor="purple"
+            strokeWidth="5"
+            animationDuration="0.75"
+            ariaLabel="rotating-lines-loading"
+            wrapperStyle={{}}
+            wrapperClass=""
+          />
+        </div>
       </div>
     );
   }

@@ -23,12 +23,13 @@
   padding: 0;
 }
 .Search .WeatherProps img {
-  width: 115px;
-  height: 115px;
+  width: 100px;
+  height: 100px;
   position: relative;
-  top: -28px;
+  top: -25px;
 }
 .WeatherProps .Temperature {
+  margin: 0 0 0 10px;
   padding: 0;
   font-size: 50px;
   line-height: 1;
@@ -36,7 +37,7 @@
 .WeatherProps .Degrees {
   font-size: 16px;
   font-weight: 550;
-  padding: 0 5px;
+  padding: 0 15px;
 }
 .WeatherProps .Degrees .UnitsCelsius {
   color: var(--secondary-color);
@@ -64,4 +65,8 @@ h4 {
   font-size: 14px;
   color: var(--secondary-color);
   line-height: 20px;
+}
+.Search .Loading {
+  text-align: center;
+  margin: 35px 0;
 }

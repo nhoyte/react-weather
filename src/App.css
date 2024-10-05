@@ -5,7 +5,7 @@
 .App .container {
   background-color: #ece1ffd2;
   border: 2px solid rgb(255, 26, 141);
-  margin: 15px auto;
+  margin: 45px auto;
   padding: 15px;
-  max-width: 50%;
+  max-width: 45%;
 }

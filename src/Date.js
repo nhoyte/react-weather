@@ -1,13 +1,9 @@
 import React from "react";
+import moment from "moment";
+
+import "./Date.css";
 
 export default function Date(props) {
-  let date = props.date;
-  date = new Intl.DateTimeFormat("en-US", {
-    dateStyle: "full",
-    timeStyle: "short",
-    timeZone: "America/New_York",
-  }).format(date);
-  console.log(date);
-
-  return <div>{date}</div>;
+  let formattedDate = moment(props.date).format("dddd h:mm a");
+  return <div className="DateTime">{formattedDate}</div>;
 }

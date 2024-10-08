@@ -1,0 +1,6 @@
+.DateTime {
+  text-align: right;
+  font-size: 14px;
+  color: var(--secondary-color);
+  line-height: 20px;
+}

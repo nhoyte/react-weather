@@ -17,6 +17,6 @@
   color: black;
   font-weight: 650;
 }
-.Temperature .Degrees a:hover {
-  color: lightskyblue;
+.Degrees a:hover {
+  color: rgb(40, 200, 240);
 }

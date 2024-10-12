@@ -17,7 +17,7 @@ export default function Temperature(props) {
     setUnits("metric");
   }
 
-  if (units == "metric") {
+  if (units === "metric") {
     return (
       <span>
         <span className="col-2 Temperature">{temp}</span>

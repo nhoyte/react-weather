@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import Date from "./Date";
 import Temperature from "./Temperature";
 

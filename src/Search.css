@@ -12,7 +12,8 @@
   border-radius: 4px;
 }
 .Search .SearchBox:focus {
-  outline: 3px solid rgba(28, 226, 252, 0.904);
+  outline: 2px solid rgba(1, 193, 219, 0.904);
+  border: 1px solid white;
   border-radius: 7px;
   background-color: rgb(235, 230, 230);
 }

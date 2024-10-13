@@ -16,7 +16,7 @@ export default function WeatherData(props) {
                 <img src={props.data.iconURL} alt="{props.data.description}" />
               </span>
               <span className="col-4 TempData">
-                <Temperature farenheit={props.data.temp} />
+                <Temperature temp={props.data.temp} />
               </span>
               <span className="col SummaryInfo">
                 <ul>

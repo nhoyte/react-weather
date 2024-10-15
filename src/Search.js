@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import { RotatingLines } from "react-loader-spinner";
 import WeatherData from "./WeatherData";
+import Forecast from "./Forecast";
 
 import "./Search.css";
 
@@ -15,8 +16,8 @@ export default function Search(props) {
   }
   function searchCity() {
     if (city) {
-      let apiKey = "6bfa54f242cbb59343d4e58db578dc61";
-      let url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=imperial`;
+      let apiKey = "b00377005017b9aacft302b5od1aa426";
+      let url = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=imperial`;
       axios.get(url).then(handleResponse);
     } else {
       alert("No city entered...");
@@ -28,16 +29,16 @@ export default function Search(props) {
   }
 
   function handleResponse(response) {
+    console.log(response);
     setWeather({
       ready: true,
-      name: response.data.name,
-      date: new Date(response.data.dt * 1000),
-      temp: Math.round(response.data.main.temp),
-      description: response.data.weather[0].description,
-      feelsLike: Math.round(response.data.main.feels_like),
-      humidity: response.data.main.humidity,
+      name: response.data.city,
+      date: new Date(response.data.time * 1000),
+      temp: Math.round(response.data.temperature.current),
+      description: response.data.condition.description,
+      humidity: response.data.temperature.humidity,
       wind: Math.round(response.data.wind.speed),
-      iconURL: `https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`,
+      iconURL: response.data.condition.icon_url,
     });
   }
 
@@ -64,6 +65,7 @@ export default function Search(props) {
           </div>
         </form>
         <WeatherData data={weather} />
+        <Forecast />
       </div>
     );
   } else {

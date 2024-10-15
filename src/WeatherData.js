@@ -20,7 +20,6 @@ export default function WeatherData(props) {
               </span>
               <span className="col SummaryInfo">
                 <ul>
-                  <li>Feels Like: {props.data.feelsLike}°F</li>
                   <li>Humidity: {props.data.humidity}%</li>
                   <li>Wind: {props.data.wind}mph</li>
                 </ul>

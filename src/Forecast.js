@@ -1,11 +1,13 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { RotatingLines } from "react-loader-spinner";
+import ForecastDay from "./ForecastDay";
 
 import "./Forecast.css";
 
 export default function Forecast(props) {
-  let [forecast, setForecast] = useState({ loaded: false });
+  let [loaded, setLoaded] = useState(false);
+  let [forecast, setForecast] = useState({});
 
   function getForecast() {
     let apiKey = "b00377005017b9aacft302b5od1aa426";
@@ -13,80 +15,22 @@ export default function Forecast(props) {
     axios.get(url).then(handleResponse);
   }
   function handleResponse(response) {
-    setForecast({
-      loaded: true,
-      name: response.data.city,
-      date: response.data.daily[0].time,
-      max: Math.round(response.data.daily[0].temperature.maximum),
-      min: Math.round(response.data.daily[0].temperature.minimum),
-      description: response.data.daily[0].condition.description,
-      iconURL: response.data.daily[0].condition.icon_url,
-    });
+    setLoaded(true);
+    setForecast(response.data.daily);
   }
 
-  if (forecast.loaded) {
+  if (loaded) {
     return (
       <div className="Forecast row">
-        <div className="col">
-          <div>{forecast.date}</div>
-          <div>
-            <img
-              src={forecast.iconURL}
-              alt={forecast.description}
-              className="WeatherIcon"
-            ></img>
-          </div>
-          <div>
-            <span>
-              <strong>{Math.round(forecast.max)}° </strong>
-            </span>
-            <span className="minTemp">{Math.round(forecast.min)}° </span>
-          </div>
-        </div>
-
-        <div className="col">
-          <div>Tues</div>
-          <div>🌞</div>
-          <div>
-            <span>
-              <strong>76° </strong>
-            </span>
-            <span>58°</span>
-          </div>
-        </div>
-
-        <div className="col">
-          <div>Wed</div>
-          <div>🌞</div>
-          <div>
-            <span>
-              <strong>76° </strong>
-            </span>
-            <span>58°</span>
-          </div>
-        </div>
-
-        <div className="col">
-          <div>Thurs</div>
-          <div>🌞</div>
-          <div>
-            <span>
-              <strong>76° </strong>
-            </span>
-            <span>58°</span>
-          </div>
-        </div>
-
-        <div className="col">
-          <div>Fri</div>
-          <div>🌞</div>
-          <div>
-            <span>
-              <strong>76° </strong>
-            </span>
-            <span>58°</span>
-          </div>
-        </div>
+        {forecast.map(function (day, index) {
+          if (index < 5) {
+            return (
+              <div className="col" key={index}>
+                <ForecastDay data={day} />
+              </div>
+            );
+          }
+        })}
       </div>
     );
   } else {

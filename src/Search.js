@@ -29,7 +29,6 @@ export default function Search(props) {
   }
 
   function handleResponse(response) {
-    console.log(response);
     setWeather({
       ready: true,
       name: response.data.city,
@@ -65,7 +64,7 @@ export default function Search(props) {
           </div>
         </form>
         <WeatherData data={weather} />
-        <Forecast />
+        <Forecast city={city} />
       </div>
     );
   } else {

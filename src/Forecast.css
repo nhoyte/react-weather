@@ -1,3 +1,13 @@
+:root {
+  --secondary-color: #919191;
+}
 .Forecast {
   text-align: center;
+}
+.Forecast .minTemp {
+  color: var(--secondary-color);
+}
+.Forecast .WeatherIcon {
+  height: 70px;
+  width: 75px;
 }

@@ -1,3 +1,6 @@
+:root {
+  --secondary-color: #919191;
+}
 .WeatherData .WeatherProps .WeatherIcon {
   padding: 0;
 }

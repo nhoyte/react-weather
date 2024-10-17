@@ -12,16 +12,16 @@ export default function Search(props) {
 
   function formSubmit(event) {
     event.preventDefault();
-    searchCity();
-  }
-  function searchCity() {
     if (city) {
-      let apiKey = "b00377005017b9aacft302b5od1aa426";
-      let url = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=imperial`;
-      axios.get(url).then(handleResponse);
+      searchCity();
     } else {
       alert("No city entered...");
     }
+  }
+  function searchCity() {
+    let apiKey = "b00377005017b9aacft302b5od1aa426";
+    let url = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=imperial`;
+    axios.get(url).then(handleResponse);
   }
 
   function updateCity(event) {
@@ -64,7 +64,7 @@ export default function Search(props) {
           </div>
         </form>
         <WeatherData data={weather} />
-        <Forecast city={city} />
+        <Forecast city={weather.name} />
       </div>
     );
   } else {
